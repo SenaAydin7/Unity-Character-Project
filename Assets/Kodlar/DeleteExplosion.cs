@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DeleteExplosion : MonoBehaviour
 {
-    [SerializeField] GameObject SmallExplosion;
-    private void OnCollisionEnter(Collision collision)
+    void Start()
     {
-        if (collision.gameObject.tag != "Player")
-        {
-            Instantiate(SmallExplosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
+        Invoke("DeleteIt", 1f);
+    }
+    
+    private void DeleteIt()
+    {
+        Destroy(gameObject);
     }
 }

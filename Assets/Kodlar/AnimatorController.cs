@@ -48,7 +48,7 @@ public class AnimatorController : MonoBehaviour
             animator.SetBool("Dance", false);
             Controller.enableMovementControl = true;
             Controller.canJump = true;
-            Debug.Log("Hareket edebilir");
+            
 
         }
 
