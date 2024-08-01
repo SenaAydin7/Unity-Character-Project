@@ -6,7 +6,7 @@ using UnityEngine;
 public class AnimatorController : MonoBehaviour
 {
     Animator animator;
-    [SerializeField] SUPERCharacterAIO Controller;
+    public SUPERCharacterAIO Controller;
     void Start()
     {
         animator = GetComponent<Animator>();   
@@ -17,7 +17,12 @@ public class AnimatorController : MonoBehaviour
     {
         AnimatorStateInfo animatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (Input.GetKey(KeyCode.Q) && animator.GetFloat("Speed") < 0.3f)
+        if (animator.GetBool("Dying"))
+        {
+            Controller.enableMovementControl = false;
+            Controller.canJump = false;
+        }
+        else if (Input.GetKey(KeyCode.Q) && animator.GetFloat("Speed") < 0.3f)
         {
             animator.SetBool("Dance", true);
             Controller.enableMovementControl = false;
